@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const hashUrl = window.location.hash.substr(1);
     if (hashUrl) {
-      setUrl(hashUrl); 
+      setUrl(hashUrl);
     }
   }, []);
 
@@ -19,7 +19,7 @@ function App() {
     clearInterval(intervalId);
     const id = setInterval(() => {
       const startTime = new Date().getTime();
-      axios.get(url)
+      axios.get(url, { timeout: intervalValue * 1000 }) 
         .then(response => {
           const endTime = new Date().getTime();
           const responseTime = endTime - startTime;
@@ -64,3 +64,4 @@ function App() {
 }
 
 export default App;
+
